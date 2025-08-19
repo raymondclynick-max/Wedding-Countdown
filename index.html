@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Louise & Ray's Wedding Countdown</title>
+    <!-- Use Tailwind CSS for a modern, responsive design -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Import a beautiful font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #fce5d4 0%, #ffefd5 100%);
+            color: #4b3d3d;
+        }
+        .countdown-container {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .countdown-item {
+            width: 100px;
+            height: 100px;
+        }
+        @media (min-width: 640px) {
+            .countdown-item {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen text-center p-4">
+
+    <!-- Main container for the countdown timer -->
+    <div class="countdown-container rounded-3xl p-8 sm:p-12 max-w-lg mx-auto transform transition-all duration-500 hover:scale-105">
+        
+        <!-- Image of the couple -->
+        <img src="https://i.postimg.cc/2Sy9MxNp/6II9784.jpg" alt="Louise and Ray" class="rounded-3xl shadow-lg mb-8 mx-auto w-full max-w-sm sm:max-w-md">
+
+        <h1 class="text-4xl sm:text-5xl font-bold mb-4">Louise & Ray's Wedding Countdown</h1>
+        <p class="text-lg sm:text-xl mb-8">Counting down the moments until our forever! ❤️</p>
+
+        <!-- Countdown display section -->
+        <div id="countdown" class="flex flex-wrap justify-center gap-4">
+            <!-- Days container -->
+            <div class="countdown-item flex flex-col items-center justify-center bg-white rounded-2xl shadow-md p-4">
+                <span id="days" class="text-4xl sm:text-5xl font-bold text-pink-600">0</span>
+                <span class="text-sm uppercase tracking-wide text-gray-600 mt-2">Days</span>
+            </div>
+            <!-- Hours container -->
+            <div class="countdown-item flex flex-col items-center justify-center bg-white rounded-2xl shadow-md p-4">
+                <span id="hours" class="text-4xl sm:text-5xl font-bold text-pink-600">0</span>
+                <span class="text-sm uppercase tracking-wide text-gray-600 mt-2">Hours</span>
+            </div>
+            <!-- Minutes container -->
+            <div class="countdown-item flex flex-col items-center justify-center bg-white rounded-2xl shadow-md p-4">
+                <span id="minutes" class="text-4xl sm:text-5xl font-bold text-pink-600">0</span>
+                <span class="text-sm uppercase tracking-wide text-gray-600 mt-2">Minutes</span>
+            </div>
+            <!-- Seconds container -->
+            <div class="countdown-item flex flex-col items-center justify-center bg-white rounded-2xl shadow-md p-4">
+                <span id="seconds" class="text-4xl sm:text-5xl font-bold text-pink-600">0</span>
+                <span class="text-sm uppercase tracking-wide text-gray-600 mt-2">Seconds</span>
+            </div>
+        </div>
+
+        <!-- Message to display when the countdown is over -->
+        <div id="message" class="text-2xl sm:text-3xl font-bold text-pink-700 mt-8 hidden">
+            Congratulations, Louise and Ray! The day is finally here! ❤️
+        </div>
+    </div>
+
+    <script>
+        // Get the specific date and time for the wedding
+        const weddingDate = new Date('September 12, 2025 16:00:00').getTime();
+
+        // Get the elements where the countdown will be displayed
+        const daysEl = document.getElementById('days');
+        const hoursEl = document.getElementById('hours');
+        const minutesEl = document.getElementById('minutes');
+        const secondsEl = document.getElementById('seconds');
+        const messageEl = document.getElementById('message');
+        const countdownEl = document.getElementById('countdown');
+
+        // Function to update the countdown timer
+        function updateCountdown() {
+            // Get the current date and time
+            const now = new Date().getTime();
+
+            // Calculate the time remaining
+            const distance = weddingDate - now;
+
+            // Check if the countdown is finished
+            if (distance < 0) {
+                // Hide the countdown and show the message
+                countdownEl.classList.add('hidden');
+                messageEl.classList.remove('hidden');
+                // Stop the interval
+                clearInterval(countdownInterval);
+                return;
+            }
+
+            // Calculate days, hours, minutes, and seconds from the remaining time
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Update the HTML elements with the new values
+            daysEl.innerHTML = days;
+            hoursEl.innerHTML = hours;
+            minutesEl.innerHTML = minutes;
+            secondsEl.innerHTML = seconds;
+        }
+
+        // Run the countdown function every second
+        const countdownInterval = setInterval(updateCountdown, 1000);
+
+        // Run the function once immediately to avoid a 1-second delay
+        updateCountdown();
+    </script>
+
+</body>
+</html>
