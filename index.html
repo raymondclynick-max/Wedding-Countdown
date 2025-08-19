@@ -34,10 +34,10 @@
         }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen text-center p-4">
+<body class="flex flex-col items-center justify-center min-h-screen text-center p-4">
 
-    <!-- Main container for the countdown timer -->
-    <div class="countdown-container rounded-3xl p-8 sm:p-12 max-w-lg mx-auto transform transition-all duration-500 hover:scale-105">
+    <!-- Main container for the UK wedding countdown timer -->
+    <div class="countdown-container rounded-3xl p-8 sm:p-12 max-w-lg mx-auto transform transition-all duration-500 hover:scale-105 mb-8">
         
         <!-- Image of the couple -->
         <img src="https://i.postimg.cc/2Sy9MxNp/6II9784.jpg" alt="Louise and Ray" class="rounded-3xl shadow-lg mb-8 mx-auto w-full max-w-sm sm:max-w-md">
@@ -49,81 +49,145 @@
         <div id="countdown" class="flex flex-wrap justify-center gap-4">
             <!-- Days container -->
             <div class="countdown-item flex flex-col items-center justify-center bg-white rounded-2xl shadow-md p-4">
-                <span id="days" class="text-4xl sm:text-5xl font-bold text-pink-600">0</span>
+                <span id="days_uk" class="text-4xl sm:text-5xl font-bold text-pink-600">0</span>
                 <span class="text-sm uppercase tracking-wide text-gray-600 mt-2">Days</span>
             </div>
             <!-- Hours container -->
             <div class="countdown-item flex flex-col items-center justify-center bg-white rounded-2xl shadow-md p-4">
-                <span id="hours" class="text-4xl sm:text-5xl font-bold text-pink-600">0</span>
+                <span id="hours_uk" class="text-4xl sm:text-5xl font-bold text-pink-600">0</span>
                 <span class="text-sm uppercase tracking-wide text-gray-600 mt-2">Hours</span>
             </div>
             <!-- Minutes container -->
             <div class="countdown-item flex flex-col items-center justify-center bg-white rounded-2xl shadow-md p-4">
-                <span id="minutes" class="text-4xl sm:text-5xl font-bold text-pink-600">0</span>
+                <span id="minutes_uk" class="text-4xl sm:text-5xl font-bold text-pink-600">0</span>
                 <span class="text-sm uppercase tracking-wide text-gray-600 mt-2">Minutes</span>
             </div>
             <!-- Seconds container -->
             <div class="countdown-item flex flex-col items-center justify-center bg-white rounded-2xl shadow-md p-4">
-                <span id="seconds" class="text-4xl sm:text-5xl font-bold text-pink-600">0</span>
+                <span id="seconds_uk" class="text-4xl sm:text-5xl font-bold text-pink-600">0</span>
                 <span class="text-sm uppercase tracking-wide text-gray-600 mt-2">Seconds</span>
             </div>
         </div>
 
         <!-- Message to display when the countdown is over -->
-        <div id="message" class="text-2xl sm:text-3xl font-bold text-pink-700 mt-8 hidden">
-            Congratulations, Louise and Ray! The day is finally here! ❤️
+        <div id="message_uk" class="text-2xl sm:text-3xl font-bold text-pink-700 mt-8 hidden">
+            Congratulations, Louise and Ray! The UK wedding day is finally here! ❤️
         </div>
     </div>
 
+    <!-- Second container for the Cyprus wedding countdown timer -->
+    <div class="countdown-container rounded-3xl p-8 sm:p-12 max-w-lg mx-auto transform transition-all duration-500 hover:scale-105 mt-8">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Cyprus Wedding Countdown</h2>
+        <p class="text-lg sm:text-xl mb-8">Counting down to Cavo Zoe, Protaras! ☀️</p>
+        
+        <!-- Countdown display section for Cyprus -->
+        <div id="countdown_cyprus" class="flex flex-wrap justify-center gap-4">
+            <!-- Days container -->
+            <div class="countdown-item flex flex-col items-center justify-center bg-white rounded-2xl shadow-md p-4">
+                <span id="days_cy" class="text-4xl sm:text-5xl font-bold text-blue-600">0</span>
+                <span class="text-sm uppercase tracking-wide text-gray-600 mt-2">Days</span>
+            </div>
+            <!-- Hours container -->
+            <div class="countdown-item flex flex-col items-center justify-center bg-white rounded-2xl shadow-md p-4">
+                <span id="hours_cy" class="text-4xl sm:text-5xl font-bold text-blue-600">0</span>
+                <span class="text-sm uppercase tracking-wide text-gray-600 mt-2">Hours</span>
+            </div>
+            <!-- Minutes container -->
+            <div class="countdown-item flex flex-col items-center justify-center bg-white rounded-2xl shadow-md p-4">
+                <span id="minutes_cy" class="text-4xl sm:text-5xl font-bold text-blue-600">0</span>
+                <span class="text-sm uppercase tracking-wide text-gray-600 mt-2">Minutes</span>
+            </div>
+            <!-- Seconds container -->
+            <div class="countdown-item flex flex-col items-center justify-center bg-white rounded-2xl shadow-md p-4">
+                <span id="seconds_cy" class="text-4xl sm:text-5xl font-bold text-blue-600">0</span>
+                <span class="text-sm uppercase tracking-wide text-gray-600 mt-2">Seconds</span>
+            </div>
+        </div>
+
+        <!-- Message to display when the countdown is over for Cyprus -->
+        <div id="message_cy" class="text-2xl sm:text-3xl font-bold text-blue-700 mt-8 hidden">
+            Congratulations on your Cyprus Wedding! Enjoy your special day! 🥂
+        </div>
+    </div>
+
+
     <script>
-        // Get the specific date and time for the wedding
-        const weddingDate = new Date('September 12, 2025 16:00:00').getTime();
+        // Get the specific date and time for the UK wedding
+        const weddingDateUK = new Date('September 12, 2025 16:00:00').getTime();
+        // Get the specific date and time for the Cyprus wedding
+        const weddingDateCyprus = new Date('May 2, 2026 16:00:00').getTime();
 
-        // Get the elements where the countdown will be displayed
-        const daysEl = document.getElementById('days');
-        const hoursEl = document.getElementById('hours');
-        const minutesEl = document.getElementById('minutes');
-        const secondsEl = document.getElementById('seconds');
-        const messageEl = document.getElementById('message');
-        const countdownEl = document.getElementById('countdown');
+        // Get the elements for the UK countdown
+        const daysElUK = document.getElementById('days_uk');
+        const hoursElUK = document.getElementById('hours_uk');
+        const minutesElUK = document.getElementById('minutes_uk');
+        const secondsElUK = document.getElementById('seconds_uk');
+        const messageElUK = document.getElementById('message_uk');
+        const countdownElUK = document.getElementById('countdown');
 
-        // Function to update the countdown timer
-        function updateCountdown() {
-            // Get the current date and time
+        // Get the elements for the Cyprus countdown
+        const daysElCyprus = document.getElementById('days_cy');
+        const hoursElCyprus = document.getElementById('hours_cy');
+        const minutesElCyprus = document.getElementById('minutes_cy');
+        const secondsElCyprus = document.getElementById('seconds_cy');
+        const messageElCyprus = document.getElementById('message_cy');
+        const countdownElCyprus = document.getElementById('countdown_cyprus');
+
+        // Function to update the UK countdown timer
+        function updateCountdownUK() {
             const now = new Date().getTime();
+            const distance = weddingDateUK - now;
 
-            // Calculate the time remaining
-            const distance = weddingDate - now;
-
-            // Check if the countdown is finished
             if (distance < 0) {
-                // Hide the countdown and show the message
-                countdownEl.classList.add('hidden');
-                messageEl.classList.remove('hidden');
-                // Stop the interval
-                clearInterval(countdownInterval);
+                countdownElUK.classList.add('hidden');
+                messageElUK.classList.remove('hidden');
+                clearInterval(countdownIntervalUK);
                 return;
             }
 
-            // Calculate days, hours, minutes, and seconds from the remaining time
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Update the HTML elements with the new values
-            daysEl.innerHTML = days;
-            hoursEl.innerHTML = hours;
-            minutesEl.innerHTML = minutes;
-            secondsEl.innerHTML = seconds;
+            daysElUK.innerHTML = days;
+            hoursElUK.innerHTML = hours;
+            minutesElUK.innerHTML = minutes;
+            secondsElUK.innerHTML = seconds;
         }
 
-        // Run the countdown function every second
-        const countdownInterval = setInterval(updateCountdown, 1000);
+        // Function to update the Cyprus countdown timer
+        function updateCountdownCyprus() {
+            const now = new Date().getTime();
+            const distance = weddingDateCyprus - now;
 
-        // Run the function once immediately to avoid a 1-second delay
-        updateCountdown();
+            if (distance < 0) {
+                countdownElCyprus.classList.add('hidden');
+                messageElCyprus.classList.remove('hidden');
+                clearInterval(countdownIntervalCyprus);
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            daysElCyprus.innerHTML = days;
+            hoursElCyprus.innerHTML = hours;
+            minutesElCyprus.innerHTML = minutes;
+            secondsElCyprus.innerHTML = seconds;
+        }
+
+        // Run the countdown functions every second
+        const countdownIntervalUK = setInterval(updateCountdownUK, 1000);
+        const countdownIntervalCyprus = setInterval(updateCountdownCyprus, 1000);
+
+        // Run the functions once immediately to avoid a 1-second delay
+        updateCountdownUK();
+        updateCountdownCyprus();
     </script>
 
 </body>
 </html>
+
